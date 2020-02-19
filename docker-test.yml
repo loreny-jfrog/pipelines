@@ -1,0 +1,14 @@
+apiVersion: v1.1
+pipelines:
+  - name: dockerTest
+    steps:
+      - name: buildTest
+        type: DockerBuild
+        configuration:
+          dockerFileLocation: .
+          dockerFileName: Dockerfile
+          dockerImageName: postgres
+          dockerImageTag: latest
+        execution:
+          onStart:
+            - echo "building"
